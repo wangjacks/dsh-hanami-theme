@@ -2,6 +2,9 @@
 
 版本 1.0.0 · 本文件逐项披露主题包引用的全部上游组件及其许可证，并给出按场景的合规建议。
 
+> **说明**：本主题的**许可证文本**为独立的 `LICENSE`（标准 GPL-3.0 全文）。
+> 本文件是其**补充说明**，交代各上游组件的许可来源、主题代码与引擎的许可关系，以及使用/分发/商用的边界。
+
 > **重要前提**：Hanami 是"运行时加载"型主题——**包内不包含任何第三方代码或资源文件**，
 > 引擎与模型均在浏览器运行时从 CDN 加载。本声明仍逐项披露来源，确保合规。
 
@@ -9,7 +12,7 @@
 
 | 组件 | 用途 | 来源 | 许可证 | 合规要点 |
 |---|---|---|---|---|
-| **Hanami 主题代码** | 主题本体（配色/樱花/看板娘集成/设置 UI） | 原创（本包） | **GPL-3.0**（见 `LICENSE`） | 与所驱动的 GPL 引擎保持一致，避免许可冲突 |
+| **Hanami 主题代码** | 主题本体（配色/樱花/看板娘集成/设置 UI） | 原创（本包） | **GPL-3.0**（见 `LICENSE`） | 与所驱动的 GPL 引擎保持一致，避免许可冲突；**本包不包含任何第三方代码/资源文件**，引擎与模型运行时从公共 CDN 加载 |
 | **live2d-widgets@1.0.1** | 看板娘引擎 | [stevenjoezhang/live2d-widget](https://github.com/stevenjoezhang/live2d-widget) | **GPL-3.0 / GPL-3.0-or-later**（GitHub 与 npm 字段一致） | Copyleft：对外分发引擎或与之构成整体作品时，须提供 GPL-3.0 文本与对应源码；**个人设备内部使用不触发分发义务** |
 | **live2d-widget-model-\*@1.0.5** | Cubism2 模型资源（静酱/小春/晴/响/Z16/Unity酱等） | [xiazeyu/live2d-widget-models](https://github.com/xiazeyu/live2d-widget-models)（npm 发布） | **GPL-2.0** | 分发须符合 GPL-2.0；个人使用无额外义务 |
 | **fghrsh/live2d_api** | 模型仓库（Pio/Tia/B站22·33/静/海王星/丛云） | [fghrsh/live2d_api](https://github.com/fghrsh/live2d_api) | 代码 **MIT**（© 2018 FGHRSH）；**模型版权归原作者** | README 原文："API 内所有模型 **版权均属于原作者，仅供研究学习，不得用于商业用途**" |

@@ -5,6 +5,7 @@
 ![engine](https://img.shields.io/badge/engine-live2d--widgets-38B0DE)
 
 > **Hanami Anime Theme** · 为 DSH（DeepSeek Harness）Web UI 设计的二次元风格主题包
+
 > 版本 1.0.0 · 动态 Cordis 客户端插件 · 纯前端、不修改产品源码
 
 ## 📖 前言
