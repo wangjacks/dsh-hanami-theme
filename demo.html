@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hanami · 花見 — 二次元主题预览</title>
+<style>
+  :root { --brand:#FF8FAB; --bg:#FFF6F9; --layer:#FFFFFF; --border:#EDC4D2; --text:#463A5A; --text2:#7E7196; }
+  body { margin:0; font-family:"Varela Round","Nunito","Hiragino Maru Gothic ProN","Yu Gothic UI",system-ui,sans-serif; background:var(--bg); color:var(--text); }
+  .wrap { padding:56px 24px 200px; max-width:720px; margin:0 auto; }
+  h1 { font-size:26px; margin:0 0 4px; }
+  .sub { color:var(--text2); margin-bottom:24px; }
+  .card { background:var(--layer); border:1px solid var(--border); border-radius:16px; padding:20px 22px; box-shadow:0 6px 24px rgba(236,196,210,.18); }
+  .swatches { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:12px 0 4px; }
+  .swatch { border:1px solid var(--border); border-radius:12px; padding:8px 10px; font-size:12px; display:flex; flex-direction:column; gap:4px; cursor:pointer; background:var(--layer); }
+  .swatch .dot { height:18px; border-radius:8px; }
+  .swatch:focus-visible { outline:2px solid var(--brand); outline-offset:2px; }
+  .swatch .nm { font-weight:700; }
+  .swatch .hex { color:var(--text2); }
+  .note { font-size:12px; color:var(--text2); margin-top:14px; line-height:1.7; }
+  .note a { color:var(--brand); }
+  @media (max-width:560px){ .swatches{grid-template-columns:repeat(2,1fr);} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🌸 Hanami · 花見 二次元主题</h1>
+  <div class="sub">DSH Web UI 二次元主题 · 配色预览</div>
+
+  <div class="card">
+    <div style="font-weight:700;margin-bottom:4px;">六套配色预设</div>
+    <div class="swatches" id="swatches" role="listbox" aria-label="配色预设"></div>
+    <div class="note">
+      点击色块预览配色。真实 DSH 环境下，主题通过官方 token 机制覆盖 UI 全局配色。
+      <br />来源与许可见 <a href="SOURCES.md">SOURCES.md</a> ·
+      引擎源码 <a href="https://github.com/stevenjoezhang/live2d-widget" target="_blank" rel="noreferrer">live2d-widget</a>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  // ---- 配色预设（与 theme.client.js 中 PRESETS 一致，仅作预览展示） ----
+  const PRESETS = {
+    sakura:   { label: '🌸 桜 Sakura',   light: { bg:'#FFF6F9', layer:'#FFFFFF', border:'#EDC4D2', brand:'#F0466F', text:'#463A5A' } },
+    lavender: { label: '💜 紫苑 Lavender', light: { bg:'#F8F5FF', layer:'#FFFFFF', border:'#D6CBF0', brand:'#7C5CF0', text:'#3F3660' } },
+    mint:     { label: '🍃 薄荷 Mint',   light: { bg:'#F1FBF8', layer:'#FFFFFF', border:'#BEE5D6', brand:'#0E9F74', text:'#173A31' } },
+    moon:     { label: '🌙 月夜 Moon',   light: { bg:'#F3F7FF', layer:'#FFFFFF', border:'#C2D4F2', brand:'#3E7BFA', text:'#22314F' } },
+    mono:     { label: '🖋️ 墨白 Mono',  light: { bg:'#F7F7F5', layer:'#FFFFFF', border:'#CBCBC8', brand:'#26261F', text:'#26261F' } },
+    citrus:   { label: '🍊 蜜柑 Citrus', light: { bg:'#FFF8F0', layer:'#FFFFFF', border:'#F0D3B8', brand:'#F26A2E', text:'#4A3122' } },
+  }
+  const root = document.documentElement
+  const setVars = (c) => {
+    root.style.setProperty('--bg', c.bg); root.style.setProperty('--layer', c.layer)
+    root.style.setProperty('--border', c.border); root.style.setProperty('--brand', c.brand)
+    root.style.setProperty('--text', c.text); root.style.setProperty('--text2', c.text2 || c.text)
+  }
+  const tpl = document.getElementById('swatches')
+  for (const [id, p] of Object.entries(PRESETS)) {
+    const el = document.createElement('button')
+    el.type = 'button'; el.className = 'swatch'; el.setAttribute('role','option'); el.setAttribute('aria-label', p.label)
+    el.innerHTML = `<span class="dot" style="background:${p.light.brand}"></span><span class="nm">${p.label}</span><span class="hex">${p.light.brand}</span>`
+    el.addEventListener('click', () => setVars(p.light))
+    tpl.appendChild(el)
+  }
+  setVars(PRESETS.sakura.light)
+</script>
+</body>
+</html>
